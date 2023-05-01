@@ -1,7 +1,3 @@
-const search = window.location.search
+const formEl = document.querySelector('form')
 
-const searchParams = new URLSearchParams(search);
-
-for (const [key, value] of searchParams) {
-    console.log((key, '=>', value));
-}
+formEl.noValidate = true;
