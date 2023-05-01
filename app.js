@@ -1,5 +1,8 @@
-const formByQuery = document.querySelector('form')
-const formByPosition = document.forms[0]
-const formByName = document.forms['formName']
+const formEl = document.querySelector('form')
+for (const el of formEl.elements) {
+    console.log(el);
+}
 
-console.log(formByPosition.elements[0]);
+console.log(
+  formEl.elements[0], formEl.elements['inputName']  
+);
