@@ -1,16 +1,12 @@
-const btnEl = document.querySelector('button')
-btnEl.addEventListener('click', changeInputType)
+const timeEl = document.querySelector('input[name="time"]')
 
-function changeInputType(e) {
-    const defaultType = 'password'
-    const inputEl = e.target.previousElementSibling
-    const currentType = inputEl.getAttribute('type')
-    if (currentType === defaultType) {
-        inputEl.removeAttribute('type')
-    } else {
-        inputEl.setAttribute('type', defaultType)
-    }
+const formEl = document.querySelector('form')
+formEl.addEventListener('submit', handleSubmit)
+
+function handleSubmit(e) {
+    e.preventDefault()
+    timeEl.value = e.timeStamp
+    console.log(timeEl.value);
 }
-
 
 
