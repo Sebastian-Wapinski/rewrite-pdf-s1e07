@@ -1,12 +1,18 @@
 const inputEl = document.querySelector('input')
 
-inputEl.addEventListener('keyup', insertNumbers)
+inputEl.addEventListener('paste', saveNumbers)
 
-function insertNumbers(e) {
-    const val = e.target.value
-    const len = val.length
+function saveNumbers(e) {
+    e.preventDefault()
 
-    if (isNaN(val)) {
-        e.target.value = val.slice(0, len - 1)
+    let inputValue = '';
+    const userData = e.clipboardData.getData('Text')
+
+    for (const char of userData) {
+        inputValue += isNaN(char) ? '' : char
     }
+
+    e.target.value = inputValue
 }
+
+
