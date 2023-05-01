@@ -1,9 +1,12 @@
-const formEl = document.querySelector('form')
+const inputEl = document.querySelector('input')
 
-formEl.addEventListener('submit', function (e) {
-    e.preventDefault();
+inputEl.addEventListener('keyup', insertNumbers)
 
-    const company = e.target.elements.company
+function insertNumbers(e) {
+    const val = e.target.value
+    const len = val.length
 
-    console.log(company.value);
-})
+    if (isNaN(val)) {
+        e.target.value = val.slice(0, len - 1)
+    }
+}
