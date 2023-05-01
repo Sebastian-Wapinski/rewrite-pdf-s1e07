@@ -1,3 +1,8 @@
 const formEl = document.querySelector('form')
 
-formEl.noValidate = true;
+formEl.addEventListener('reset', function(e) {
+    const userConfirm = confirm('Are you sure?')
+    if (!userConfirm) {
+        e.preventDefault();
+    }
+})
