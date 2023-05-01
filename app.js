@@ -1,3 +1,7 @@
-const formEl = document.querySelector('form')
+const search = window.location.search
 
-console.log(window.location.href);
+const searchParams = new URLSearchParams(search);
+
+for (const [key, value] of searchParams) {
+    console.log((key, '=>', value));
+}
