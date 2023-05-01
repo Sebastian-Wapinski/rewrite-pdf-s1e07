@@ -1,18 +1,16 @@
-const inputEl = document.querySelector('input')
+const btnEl = document.querySelector('button')
+btnEl.addEventListener('click', changeInputType)
 
-inputEl.addEventListener('paste', saveNumbers)
-
-function saveNumbers(e) {
-    e.preventDefault()
-
-    let inputValue = '';
-    const userData = e.clipboardData.getData('Text')
-
-    for (const char of userData) {
-        inputValue += isNaN(char) ? '' : char
+function changeInputType(e) {
+    const defaultType = 'password'
+    const inputEl = e.target.previousElementSibling
+    const currentType = inputEl.getAttribute('type')
+    if (currentType === defaultType) {
+        inputEl.removeAttribute('type')
+    } else {
+        inputEl.setAttribute('type', defaultType)
     }
-
-    e.target.value = inputValue
 }
+
 
 
