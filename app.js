@@ -8,16 +8,20 @@ function readFile(e) {
     console.log(e.target, 'e.target');
     console.log(e.target.files[0], 'e.target.files[0]');
 
+    const checkE = e
+    console.log(checkE, 'checkE');
+
     if (file && file.type.includes('text')) {
         const reader = new FileReader()
 
+        console.log(checkE, 'checkE inside');
         console.log(reader);
         
         reader.onload = function (readerEvent) {
             const content = readerEvent.target.result
             pElement.textContent = content
 
-
+            console.log(checkE, 'checkE inside inside');
             console.log(content);
             console.log(readerEvent);
             console.log(readerEvent.target);
