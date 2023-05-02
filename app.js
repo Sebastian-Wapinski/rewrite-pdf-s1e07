@@ -1,26 +1,15 @@
-const ulEl = document.querySelector('ul')
-const formEl = document.querySelector('form')
+const inpList = document.querySelectorAll('input')
+const spanEl = document.querySelector('span')
 
-formEl.addEventListener('submit', checkData)
+inpList.forEach(function (input) {
+    input.addEventListener('input', calculate)
+})
 
-function checkData(e) {
-    const name = e.target.elements.name.value
-    const email = e.target.elements.email.value
-    const errors = []
+function calculate(e) {
+    let sum = 0
+    inpList.forEach(function (inp) {
+        sum += Number(inp.value)
+    })
 
-    if (name.length === 0) {
-        errors.push('Field name is required!')
-    }
-    if (!email.includes('@')) {
-        errors.push('Email need @ sign!')
-    }
-    if (errors.length > 0) {
-        e.preventDefault()
-        ulEl.innerHTML = ''
-        errors.forEach(function (err) {
-            const newLi = document.createElement('li')
-            newLi.innerText = err
-            ulEl.appendChild(newLi)
-        })
-    }
+    spanEl.innerText = sum
 }
