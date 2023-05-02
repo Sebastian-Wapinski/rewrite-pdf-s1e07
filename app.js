@@ -1,12 +1,14 @@
-const timeEl = document.querySelector('input[name="time"]')
+const fileEl = document.querySelector('input')
 
-const formEl = document.querySelector('form')
-formEl.addEventListener('submit', handleSubmit)
+fileEl.addEventListener('change', showInfoFile)
 
-function handleSubmit(e) {
-    e.preventDefault()
-    timeEl.value = e.timeStamp
-    console.log(timeEl.value);
+function showInfoFile(e) {
+    const file = e.target.files[0]
+    console.log(
+        file.name,
+        file.size,
+        file.type,
+    );
 }
 
 
