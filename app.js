@@ -1,16 +1,16 @@
-const selectEl = document.querySelector('select')
-selectEl.addEventListener('change', showOptionsInfo)
+const textEl = document.querySelector('textarea')
+textEl.addEventListener('change', showText)
+textEl.addEventListener('input', prepareHeight)
 
-function showOptionsInfo(e) {
-    const valuesList = []
+function showText(e) {
+    console.log(e.target.value);
+}
 
-    const optionsList = Array.from(e.target.options)
+function prepareHeight(e) {
+    const item = e.target
+    // console.log(e);
 
-    optionsList.forEach(function (option) {
-        if (option.selected) {
-            valuesList.push(option.value)
-        }
-    })
-
-    console.log(valuesList);
+    if (item.scrollHeight > item.offsetHeight) {
+        item.style.height = item.scrollHeight + 'px'
+    }
 }
