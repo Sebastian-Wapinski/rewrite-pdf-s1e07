@@ -1,15 +1,15 @@
-const inpList = document.querySelectorAll('input')
-const spanEl = document.querySelector('span')
+const inputEl = document.querySelector('input')
 
-inpList.forEach(function (input) {
-    input.addEventListener('input', calculate)
-})
+inputEl.style.border = 'none'
 
-function calculate(e) {
-    let sum = 0
-    inpList.forEach(function (inp) {
-        sum += Number(inp.value)
-    })
+inputEl.addEventListener('input', checkAge)
 
-    spanEl.innerText = sum
+function checkAge(e) {
+    const age = e.target.value
+
+    if(isNaN(age)) {
+        e.target.style.border = '1px solid red'
+    } else {
+        e.target.style.border = '1px solid green'
+    }
 }
