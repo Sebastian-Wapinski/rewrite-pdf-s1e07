@@ -3,6 +3,9 @@ colorEl.addEventListener('change', changeBGColor)
 
 function changeBGColor(e) {
     const body = document.body
+    console.log(e);
+    console.log(e.target);
+    console.log(e.target.value);
     const color = e.target.value
 
     body.style.backgroundColor = color
