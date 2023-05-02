@@ -3,6 +3,7 @@ const fileEl = document.querySelector('input')
 fileEl.addEventListener('change', readFile)
 function readFile(e) {
     const file = e.target.files[0]
+    console.log(e);
     console.log(e.target, 'e.target');
     console.log(e.target.files[0], 'e.target.files[0]');
 
