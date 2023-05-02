@@ -1,13 +1,14 @@
 const selectEl = document.querySelector('select')
-selectEl.addEventListener('change', showUser)
+selectEl.addEventListener('change', showOptionsInfo)
 
-function showUser(e) {
-    console.log(
-        e,
-        e.target,
-        e.target.value,
-        e.target.selectedIndex,
-        selectEl.selectedOptions,
-        e.target.innerText
-    );
+function showOptionsInfo(e) {
+    const optionsList = e.target.querySelectorAll('option')
+
+    optionsList.forEach(option => {
+        console.log(
+            option.value,
+            option.innerText,
+            option.selected,
+        );
+    });
 }
