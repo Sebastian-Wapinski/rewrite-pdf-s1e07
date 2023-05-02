@@ -1,19 +1,22 @@
-const formEl = document.querySelector('form')
-formEl.addEventListener('submit', handleSubmit)
+const colorEl = document.querySelector('input')
+colorEl.addEventListener('change', changeBGColor)
 
-function handleSubmit(e) {
-    e.preventDefault()
+function changeBGColor(e) {
+    const body = document.body
+    const color = e.target.value
 
-    const confirm = e.target.elements['confirm']
-    // console.log(e);
-
-    if (!confirm.checked) {
-        const numberAgreement = confirm.value
-
-        alert('Confirm agreement no: ' + numberAgreement)
-    } else {
-        alert('Thank you! Data was send.')
-    }
+    body.style.backgroundColor = color
+    body.style.color = invertColor(color)
 }
 
-
+function invertColor(hex) {
+    console.log(hex);
+    let color = '#'
+    for (let i = 1; i < 6; i = i + 2) {
+        const dec = 255 - parseInt(hex.substr(i, 2), 16)
+        console.log(dec);
+        color += (dec < 16 ? '0' : '') + dec.toString(16)
+        console.log(color);
+    }
+    return color
+}
