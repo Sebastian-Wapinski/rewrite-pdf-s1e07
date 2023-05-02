@@ -1,17 +1,26 @@
-const spanEl = document.querySelector('span')
-const inputEl= document.querySelector('input')
+const ulEl = document.querySelector('ul')
+const formEl = document.querySelector('form')
 
-inputEl.addEventListener('input', checkEmail)
+formEl.addEventListener('submit', checkData)
 
-function checkEmail(e) {
-    const self = e.target
-    const email = self.value
+function checkData(e) {
+    const name = e.target.elements.name.value
+    const email = e.target.elements.email.value
+    const errors = []
 
+    if (name.length === 0) {
+        errors.push('Field name is required!')
+    }
     if (!email.includes('@')) {
-        self.style.border = '1px solid red'
-        spanEl.innerText = 'Where is @'
-    } else {
-        self.style.border = '1px solid green'
-        spanEl.innerText = ''
+        errors.push('Email need @ sign!')
+    }
+    if (errors.length > 0) {
+        e.preventDefault()
+        ulEl.innerHTML = ''
+        errors.forEach(function (err) {
+            const newLi = document.createElement('li')
+            newLi.innerText = err
+            ulEl.appendChild(newLi)
+        })
     }
 }
