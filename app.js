@@ -2,13 +2,15 @@ const selectEl = document.querySelector('select')
 selectEl.addEventListener('change', showOptionsInfo)
 
 function showOptionsInfo(e) {
-    const optionsList = e.target.querySelectorAll('option')
+    const valuesList = []
 
-    optionsList.forEach(option => {
-        console.log(
-            option.value,
-            option.innerText,
-            option.selected,
-        );
-    });
+    const optionsList = Array.from(e.target.options)
+
+    optionsList.forEach(function (option) {
+        if (option.selected) {
+            valuesList.push(option.value)
+        }
+    })
+
+    console.log(valuesList);
 }
