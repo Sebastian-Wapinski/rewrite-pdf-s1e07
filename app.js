@@ -1,16 +1,19 @@
-const labelEl = document.querySelector('label')
-const sizeList = document.querySelectorAll('[type="radio"]')
+const formEl = document.querySelector('form')
+formEl.addEventListener('submit', handleSubmit)
 
-labelEl.addEventListener('click', showSizes)
+function handleSubmit(e) {
+    e.preventDefault()
 
-function showSizes(e) {
-    sizeList.forEach(function (element) {
-        console.log(
-            element.value,
-            '=>',
-            element.checked,
-        );
-    })
+    const confirm = e.target.elements['confirm']
+    // console.log(e);
+
+    if (!confirm.checked) {
+        const numberAgreement = confirm.value
+
+        alert('Confirm agreement no: ' + numberAgreement)
+    } else {
+        alert('Thank you! Data was send.')
+    }
 }
 
 
